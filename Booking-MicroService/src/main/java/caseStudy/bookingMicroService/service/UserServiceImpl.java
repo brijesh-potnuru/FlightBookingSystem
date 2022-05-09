@@ -112,6 +112,21 @@ public class UserServiceImpl implements UserService {
 				options().returnNew(true).upsert(true), DatabaseSequence.class);
 		return !Objects.isNull(dbSeq) ? dbSeq.getSeq() : 1;
 	}
+	
+	
+	// This method is to update payment field in user details after successful
+	// payment
+	@Override
+	public void updateUserPaymentDetails(long pnrNo) {
+		List<UserDetails> details = userRepo.findAll();
+		for (UserDetails x : details) {
+			// System.out.println(x);
+			if (x.getPnrNo() == pnrNo) {
+				x.setPayment("Sucessful");
+				userRepo.save(x);
+			}
+		}
+	}
 
 //	// to send an email after booking of a Flight ticket
 //	public void sendEmail(long pnrNo) throws AddressException {

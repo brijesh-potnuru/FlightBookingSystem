@@ -7,5 +7,6 @@ public interface UserService
 	public List<UserDetails> getAll(); 
 	public UserDetails getUserDetailsById(long pnrNo); 
 	public String addUserBookingDetails(UserDetails userDetails); 
-	public String deleteUserBookingDetails(long pnrNo); 
+	public String deleteUserBookingDetails(long pnrNo);
+	public void updateUserPaymentDetails(long pnrNo);
 }
